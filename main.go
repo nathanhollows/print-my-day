@@ -6,7 +6,6 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	handler "github.com/nathanhollows/todo/handlers"
 )
 
 func main() {
@@ -14,8 +13,8 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 
-	r.Handle("/", handler.Handler(handler.IndexHandler))
-	r.Handle("/print", handler.Handler(handler.PrintHandler))
+	r.Handle("/", Handler(IndexHandler))
+	r.Handle("/print", Handler(PrintHandler))
 
 	http.ListenAndServe(":8111", r)
 
