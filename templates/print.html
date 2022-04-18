@@ -1,0 +1,26 @@
+{{ define "main" }}{
+    "0":{
+       "type":0,
+       "content":"{{ .date }}",
+       "bold":1,
+       "align":0,
+       "format":3
+
+    },
+    {{ if ne (len .events) 0 }}
+   "2":{
+      "type":0,
+      "content":"{{range $i, $a := .events}}{{ if le $i 15 }}{{ $a.Time }} {{ $a.Summary }}
+{{end }}{{end}}",
+      "bold":0,
+      "align":0
+   },
+   {{ end }}
+     "3":{
+        "type":0,
+        "content":"{{range $i, $a := .data}}{{ if le $i 10 }}[ ] {{ wrap $a.Description }}
+{{end }}{{end}}",
+        "bold":0,
+        "align":0
+     }
+ }{{ end }}

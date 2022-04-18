@@ -1,0 +1,78 @@
+{{ define "main" }}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: #faf9f9;
+            color: #555b6e;
+            height: 100vh;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            font-family: Sans-serif;
+            overflow: hidden;
+        }
+        body > div:nth-child(1) {
+            margin: 3em;
+        }
+        body > div:nth-child(1) > div:nth-child(1) {
+            text-align: center;
+            height: 6em;
+        }
+        pre {
+            display: inline-block;
+            font-size: 1.1em;
+        }
+        p {
+            width: 20em;
+        }
+        a {
+            display: inline-block;
+            background: #89b0ae;
+            border: none;
+            padding: 2em 0;
+            font-size: 1em;
+            line-height: 0;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.2em;
+            font-weight: bold;
+            box-shadow: 0.3em 0.3em 0 #555b6e;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        a:hover, a:focus, a:active {
+            box-shadow: 0 0 0 #555b6e !important;
+            margin: 0.3em 0 0 0.3em;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            <a href="my.bluetoothprint.scheme://http://192.168.178.35:8000/print">Print my day!</a>
+        </div>
+        <p>
+            <strong>Calendar</strong> <br>
+            {{ if ne (len .events) 0 }}
+            <pre>
+{{range $i, $a := .events}}{{ if le $i 15 }}{{ $a.Time }} {{ $a.Summary }}
+{{end }}{{end}}</pre>{{ end }}
+        </p>
+        <p>
+            <strong>To Do</strong> <br>
+            <pre>
+{{range $i, $a := .data}}{{ if le $i 10 }}[ ] {{wrap $a.Description }}
+{{end }}{{end}}
+            </pre>
+        </p>
+    </div>
+</body>
+</html>
+{{ end }}
