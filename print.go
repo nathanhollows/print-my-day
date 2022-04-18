@@ -21,9 +21,6 @@ import (
 // IndexHandler serves the front page
 func IndexHandler(w http.ResponseWriter, r *http.Request) error {
 	data := make(map[string]interface{})
-	if r.Header.Get("HX-Request") == "true" {
-		data["contentOnly"] = true
-	}
 	data["url"] = os.Getenv("PRINT_URL")
 	data["data"] = getTasks()
 	data["events"] = getEvents()
@@ -35,9 +32,6 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) error {
 func PrintHandler(w http.ResponseWriter, r *http.Request) error {
 	data := make(map[string]interface{})
 	w.Header().Set("Content-Type", "application/json")
-	if r.Header.Get("HX-Request") == "true" {
-		data["contentOnly"] = true
-	}
 	data["data"] = getTasks()
 	data["events"] = getEvents()
 	data["date"] = time.Now().Format("Mon January 2")

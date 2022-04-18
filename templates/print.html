@@ -9,8 +9,8 @@
     {{ if ne (len .events) 0 }}
    "2":{
       "type":0,
-      "content":"{{range $i, $a := .events}}{{ if le $i 15 }}{{ $a.Time }} {{ $a.Summary }}{{end }}
-{{end}}",
+      "content":"{{range $i, $a := .events}}{{ if le $i 15 }}{{ $a.Time }} {{ $a.Summary }}
+{{end }}{{end}}",
       "bold":0,
       "align":0
    },
