@@ -24,6 +24,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) error {
 	if r.Header.Get("HX-Request") == "true" {
 		data["contentOnly"] = true
 	}
+	data["url"] = os.Getenv("PRINT_URL")
 	data["data"] = getTasks()
 	data["events"] = getEvents()
 	data["date"] = time.Now().Format("Mon January 2")
@@ -38,9 +39,7 @@ func PrintHandler(w http.ResponseWriter, r *http.Request) error {
 		data["contentOnly"] = true
 	}
 	data["data"] = getTasks()
-
 	data["events"] = getEvents()
-
 	data["date"] = time.Now().Format("Mon January 2")
 	return render(w, data, "print.html")
 }
