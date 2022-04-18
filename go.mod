@@ -1,4 +1,4 @@
-module github.com/nathanhollows/todo
+module github.com/nathanhollows/print-my-day
 
 go 1.16
 
