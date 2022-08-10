@@ -63,8 +63,8 @@
             <strong>Calendar</strong> <br>
             {{ if ne (len .events) 0 }}
             <pre>
-{{range $i, $a := .events}}{{ if le $i 15 }}{{ $a.Time }} {{ $a.Summary }}
-{{end }}{{end}}</pre>{{ end }}
+{{range $i, $a := .events}}{{ $a.Time }} {{ $a.Summary }}
+{{end }}</pre>{{ end }}
         </p>
         <p>
             <strong>To Do</strong> <br>

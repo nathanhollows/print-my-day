@@ -138,7 +138,7 @@ func getEvents() []event {
 	t := time.Date(year, month, day, 0, 0, 0, 0, time.Local).Format(time.RFC3339)
 	end := time.Date(year, month, day, 23, 0, 0, 0, time.Local).Format(time.RFC3339)
 	events, err := srv.Events.List("primary").ShowDeleted(false).
-		SingleEvents(true).TimeMin(t).TimeMax(end).MaxResults(10).OrderBy("startTime").Do()
+		SingleEvents(true).TimeMin(t).TimeMax(end).OrderBy("startTime").Do()
 	if err != nil {
 		log.Fatalf("Unable to retrieve next ten of the user's events: %v", err)
 	}
